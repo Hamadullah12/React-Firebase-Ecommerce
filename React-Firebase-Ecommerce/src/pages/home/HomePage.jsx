@@ -5,6 +5,7 @@ import Category from "../../components/category/Category";
 import HomePageProductCard from "../../components/homePageProductCard/HomePageProductCard";
 import Track from "../../components/track/Track";
 import Testimonial from "../../components/testimonial/Testimonial";
+import Loader from "../../components/loader/Loader";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
         <HomePageProductCard />
         <Track />
         <Testimonial />
+        <Loader />
       </Layout>
     </div>
   );
