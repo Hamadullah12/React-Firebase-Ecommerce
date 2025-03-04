@@ -2,8 +2,13 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import ProductDetail from "../../components/admin/ProductDetail";
 import OrderDetail from "../../components/admin/OrderDetail";
 import UserDetail from "../../components/admin/UserDetail";
+import { useContext } from "react";
+import myContext from "../../context/myContext";
 
 const AdminDashboard = () => {
+  const user = JSON.parse(localStorage.getItem("users"));
+  const context = useContext(myContext);
+  const { getAllProduct } = context;
   return (
     <div>
       {/* Top */}
@@ -27,13 +32,23 @@ const AdminDashboard = () => {
                 alt=""
               />
             </div>
-            {/* text  */}
+            {/* name  */}
             <div className="">
               <h1 className=" text-center text-lg text-fuchsia-950">
-                <span className=" font-bold">Name :</span> Hamad Ullah
+                <span className=" font-bold">Name :</span> {user?.name}
               </h1>
+              {/* email  */}
+
               <h1 className=" text-center text-lg text-fuchsia-950">
-                <span className=" font-bold">Email :</span> test@gmail.com
+                <span className=" font-bold">Email :</span> {user?.email}
+              </h1>
+              {/* date */}
+              <h1 className=" text-center text-lg text-fuchsia-950">
+                <span className=" font-bold">Date:</span> {user?.date}
+              </h1>
+              {/* role*/}
+              <h1 className=" text-center text-lg text-fuchsia-950">
+                <span className=" font-bold">Role:</span> {user?.role}
               </h1>
             </div>
           </div>
@@ -69,7 +84,7 @@ const AdminDashboard = () => {
                     </svg>
                   </div>
                   <h2 className="title-font font-medium text-3xl text-fuchsia-950 fonts1">
-                    10
+                    {getAllProduct.length}
                   </h2>
                   <p className=" text-fuchsia-950  font-bold">Total Products</p>
                 </div>
